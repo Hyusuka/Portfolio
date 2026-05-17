@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
 import Button from '../components/ui/Button';
 import { useNavigate } from 'react-router-dom';
@@ -367,7 +367,7 @@ function ProjectsEditor({ data, showToast }) {
   const [editIdx, setEditIdx] = useState(null);
   const [form, setForm] = useState(null);
 
-  const blank = { id: Date.now(), title: '', shortDesc: '', techStack: [''], image: '', github: '', details: [''] };
+  const blank = { title: '', shortDesc: '', techStack: [''], image: '', github: '', details: [''] };
 
   const openEdit = (i) => { setEditIdx(i); setForm({ ...projects[i], techStack: [...projects[i].techStack], details: [...projects[i].details] }); };
   const openAdd = () => { setEditIdx(-1); setForm({ ...blank, id: Date.now() }); };
