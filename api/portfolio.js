@@ -1,164 +1,102 @@
 import express from 'express';
 import cors from 'cors';
-import mysql from 'mysql2/promise';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const app = express();
-
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
-// Database Pool using Cloud credentials (or fallback to local)
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'portfolio_db',
-  port: parseInt(process.env.DB_PORT || '3306'),
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
+const MONGODB_URI = process.env.MONGODB_URI;
 
-// Helper to parse JSON safely
-const safeParse = (str, fallback = []) => {
-  if (!str) return fallback;
-  try { return typeof str === 'string' ? JSON.parse(str) : str; } 
-  catch (e) { return fallback; }
-};
+if (!MONGODB_URI) {
+  console.warn('MONGODB_URI environment variable is missing.');
+}
 
-// Handle both GET and POST requests for /api/portfolio
+// Global caching for Serverless Mongoose connection
+let cached = global.mongoose;
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+async function connectToDatabase() {
+  if (cached.conn) return cached.conn;
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI, {
+      bufferCommands: false,
+    }).then((mongoose) => {
+      console.log('✅ Connected to MongoDB Atlas');
+      return mongoose;
+    });
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
+
+// ----------------------------------------------------------------------
+// MongoDB Schema Model
+// Since MongoDB is NoSQL, we can store the entire portfolio as a single 
+// flexible JSON document. This is highly efficient for this use case.
+// ----------------------------------------------------------------------
+const portfolioSchema = new mongoose.Schema({
+  profile: { type: Object, default: {} },
+  experience: { type: Array, default: [] },
+  education: { type: Array, default: [] },
+  skills: { type: Array, default: [] },
+  languages: { type: Array, default: [] },
+  certificates: { type: Array, default: [] },
+  projects: { type: Array, default: [] },
+}, { strict: false });
+
+const Portfolio = mongoose.models.Portfolio || mongoose.model('Portfolio', portfolioSchema);
+
+// ----------------------------------------------------------------------
+// API Routes
+// ----------------------------------------------------------------------
 app.all('/api/portfolio', async (req, res) => {
-  if (req.method === 'GET') {
-    try {
-      const [
-        [profileRows], [experienceRows], [educationRows], 
-        [skillsRows], [languagesRows], [certificatesRows], [projectsRows]
-      ] = await Promise.all([
-        pool.query('SELECT * FROM profile WHERE id = 1'),
-        pool.query('SELECT * FROM experience'),
-        pool.query('SELECT * FROM education'),
-        pool.query('SELECT * FROM skills'),
-        pool.query('SELECT * FROM languages'),
-        pool.query('SELECT * FROM certificates'),
-        pool.query('SELECT * FROM projects')
-      ]);
+  try {
+    // Ensure DB is connected before processing request
+    await connectToDatabase();
 
-      const profile = profileRows[0] || {};
-      profile.interests = safeParse(profile.interests, []);
-
-      const experience = experienceRows.map(row => ({
-        ...row,
-        points: safeParse(row.points, [])
-      }));
-
-      const education = educationRows.map(row => ({
-        ...row,
-        details: safeParse(row.details, [])
-      }));
-
-      const skills = skillsRows.map(row => ({
-        ...row,
-        items: safeParse(row.items, [])
-      }));
-
-      const projects = projectsRows.map(row => ({
-        ...row,
-        techStack: safeParse(row.techStack, []),
-        details: safeParse(row.details, [])
-      }));
-
-      res.json({
-        profile,
-        experience,
-        education,
-        skills,
-        languages: languagesRows,
-        certificates: certificatesRows,
-        projects
-      });
-    } catch (error) {
-      console.error('Error fetching data from MySQL:', error);
-      res.status(500).json({ error: 'Failed to fetch data from MySQL Database' });
-    }
-  } 
-  
-  else if (req.method === 'POST') {
-    const { profile, experience, education, skills, languages, certificates, projects } = req.body;
-    const connection = await pool.getConnection();
-
-    try {
-      await connection.beginTransaction();
-
-      if (profile) {
-        await connection.query(`
-          INSERT INTO profile (id, name, role, phone, email, location, linkedin, github, summary, photo, interests)
-          VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-          ON DUPLICATE KEY UPDATE 
-            name=VALUES(name), role=VALUES(role), phone=VALUES(phone), email=VALUES(email),
-            location=VALUES(location), linkedin=VALUES(linkedin), github=VALUES(github),
-            summary=VALUES(summary), photo=VALUES(photo), interests=VALUES(interests)
-        `, [
-          profile.name, profile.role, profile.phone, profile.email, profile.location,
-          profile.linkedin, profile.github, profile.summary, profile.photo,
-          JSON.stringify(profile.interests || [])
-        ]);
+    if (req.method === 'GET') {
+      // Find the first document (we only need one document for the whole portfolio)
+      let data = await Portfolio.findOne();
+      
+      if (!data) {
+        return res.json({
+          profile: {}, experience: [], education: [], 
+          skills: [], languages: [], certificates: [], projects: []
+        });
       }
 
-      const truncateAndInsert = async (table, data, insertQuery, mapRow) => {
-        await connection.query(`TRUNCATE TABLE ${table}`);
-        if (data && data.length > 0) {
-          const values = data.map(mapRow);
-          await connection.query(insertQuery, [values]);
-        }
-      };
-
-      await truncateAndInsert('experience', experience, 
-        'INSERT INTO experience (title, type, period, techStack, team, location, points) VALUES ?',
-        row => [row.title, row.type, row.period, row.techStack, row.team, row.location, JSON.stringify(row.points || [])]
-      );
-
-      await truncateAndInsert('education', education,
-        'INSERT INTO education (school, period, focus, details) VALUES ?',
-        row => [row.school, row.period, row.focus, JSON.stringify(row.details || [])]
-      );
-
-      await truncateAndInsert('skills', skills,
-        'INSERT INTO skills (category, items) VALUES ?',
-        row => [row.category, JSON.stringify(row.items || [])]
-      );
-
-      await truncateAndInsert('languages', languages,
-        'INSERT INTO languages (name, level, color) VALUES ?',
-        row => [row.name, row.level, row.color]
-      );
-
-      await truncateAndInsert('certificates', certificates,
-        'INSERT INTO certificates (title, issuer, date, description, image) VALUES ?',
-        row => [row.title, row.issuer, row.date, row.description, row.image]
-      );
-
-      await truncateAndInsert('projects', projects,
-        'INSERT INTO projects (title, shortDesc, image, github, techStack, details) VALUES ?',
-        row => [row.title, row.shortDesc, row.image, row.github, JSON.stringify(row.techStack || []), JSON.stringify(row.details || [])]
-      );
-
-      await connection.commit();
-      res.json({ message: 'Portfolio synchronized successfully with MySQL!' });
-    } catch (error) {
-      await connection.rollback();
-      console.error('Error saving data to MySQL:', error);
-      res.status(500).json({ error: 'Failed to save data to MySQL Database' });
-    } finally {
-      connection.release();
+      res.json(data);
+    } 
+    
+    else if (req.method === 'POST') {
+      const payload = req.body;
+      
+      // Upsert: Update the first document if it exists, or create it if it doesn't
+      let data = await Portfolio.findOne();
+      if (!data) {
+        data = new Portfolio(payload);
+        await data.save();
+      } else {
+        data.set(payload);
+        await data.save();
+      }
+      
+      res.json({ message: 'Portfolio synchronized successfully with MongoDB Atlas!' });
+    } 
+    
+    else {
+      res.setHeader('Allow', ['GET', 'POST']);
+      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
-  } 
-  
-  else {
-    res.setHeader('Allow', ['GET', 'POST']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+  } catch (error) {
+    console.error('MongoDB API Error:', error);
+    res.status(500).json({ error: 'Failed to communicate with MongoDB Atlas Database' });
   }
 });
 
