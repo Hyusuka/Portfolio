@@ -11,7 +11,7 @@ import {
 
 const PortfolioContext = createContext();
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/portfolio';
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api/portfolio' : '/api/portfolio');
 
 export function PortfolioProvider({ children }) {
   const [profile, setProfile] = useState(defaultProfile);
