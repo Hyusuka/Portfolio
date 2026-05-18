@@ -109,7 +109,78 @@ export const defaultLanguages = [
   { name: "Japanese", level: "Newbie", color: "var(--pink)" },
 ];
 
-export const defaultCertificates = [];
+export const defaultCertificates = [
+  {
+    title: "Introduction to Wireless LAN Installation",
+    issuer: "Universitas Gunadarma",
+    date: "May 17, 2024",
+    description: "Certificate of Training for completing the Introduction to Wireless LAN Installation program.",
+    image: "/images/sertifikat/serti1.jpg"
+  },
+  {
+    title: "Go-Lang for Intermediate",
+    issuer: "Universitas Gunadarma",
+    date: "February 20, 2025",
+    description: "Certificate of Training for completing the Go-Lang for Intermediate program.",
+    image: "/images/sertifikat/serti2.jpg"
+  },
+  {
+    title: "Oracle for Beginner",
+    issuer: "Universitas Gunadarma",
+    date: "August 19, 2024",
+    description: "Certificate of Training for completing the Oracle for Beginner program.",
+    image: "/images/sertifikat/serti3.jpg"
+  },
+  {
+    title: "Application Development Design",
+    issuer: "Universitas Gunadarma",
+    date: "September 27, 2025",
+    description: "Certificate of Training for completing the Application Development Design program.",
+    image: "/images/sertifikat/serti4.jpg"
+  },
+  {
+    title: "Go-Lang for Beginner",
+    issuer: "Universitas Gunadarma",
+    date: "February 19, 2024",
+    description: "Certificate of Training for completing the Go-Lang for Beginner program.",
+    image: "/images/sertifikat/serti5.jpg"
+  },
+  {
+    title: "Fundamental DBMS",
+    issuer: "Universitas Gunadarma",
+    date: "August 21, 2023",
+    description: "Certificate of Training for completing the Fundamental DBMS program.",
+    image: "/images/sertifikat/serti6.jpg"
+  },
+  {
+    title: "Oracle for Intermediate",
+    issuer: "Universitas Gunadarma",
+    date: "August 18, 2025",
+    description: "Certificate of Training for completing the Oracle for Intermediate program.",
+    image: "/images/sertifikat/serti7.jpg"
+  },
+  {
+    title: "Fundamental Web Programming",
+    issuer: "Universitas Gunadarma",
+    date: "February 20, 2023",
+    description: "Certificate of Training for completing the Fundamental Web Programming program.",
+    image: "/images/sertifikat/serti8.jpg"
+  },
+  {
+    title: "Industrial Work Practice (Internship)",
+    issuer: "SSR Jakarta",
+    date: "March 13, 2020",
+    description: "Certificate of Participation for completing the Industrial Work Practice program in Computer and Network Engineering.",
+    image: "/images/sertifikat/serti9.jpeg"
+  },
+  {
+    title: "ESET Campus Security Day",
+    issuer: "Universitas Gunadarma & PT Prosperita Mitra Indonesia",
+    date: "July 4, 2025",
+    description: "Certificate of Attendance for participating in the ESET Campus Security Day to improve personal data security literacy.",
+    image: "/images/sertifikat/serti10.png"
+  }
+];
 
 export const defaultProjects = [
   {
