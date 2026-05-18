@@ -84,7 +84,7 @@ export default function Navbar() {
           </Button>
           <Button
             as="a"
-            href="mailto:juanrahawarin12@gmail.com"
+            href="https://wa.me/6281290320714"
             variant="outline"
             size="sm"
             style={{ borderRadius: '50px' }}
