@@ -36,7 +36,7 @@ export const defaultExperience = [
   {
     title: "Network Technician",
     type: "Internship",
-    period: "2019 – 2020",
+    period: "20 January - March 13, 2020",
     techStack: "",
     team: "",
     location:
