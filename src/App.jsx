@@ -12,7 +12,7 @@ function App() {
           <Route path="/" element={<Portfolio />} />
           <Route path="/juan_wens_sanctung_rahawarin" element={<Admin />} />
         </Routes>
-      </HashRouter>
+      </HashRouter> 
     </PortfolioProvider>
   );
 }

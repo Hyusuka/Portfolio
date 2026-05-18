@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
 import Button from '../components/ui/Button';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowLeft, FiSave, FiPlus, FiTrash2, FiEdit3, FiX, FiUpload, FiRefreshCw } from 'react-icons/fi';
+import { FiArrowLeft, FiSave, FiPlus, FiTrash2, FiEdit3, FiX, FiUpload, FiRefreshCw, FiArrowUp, FiArrowDown } from 'react-icons/fi';
 
 /* ============================================================
    Helper: convert file to base64 dataURL
@@ -166,6 +166,20 @@ function ExperienceEditor({ data, showToast }) {
 
   const remove = (i) => { if (confirm('Delete this entry?')) { setExperience(experience.filter((_, j) => j !== i)); showToast('🗑️ Deleted!'); } };
 
+  const moveUp = (i) => {
+    if (i === 0) return;
+    const arr = [...experience];
+    [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+    setExperience(arr);
+  };
+
+  const moveDown = (i) => {
+    if (i === experience.length - 1) return;
+    const arr = [...experience];
+    [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+    setExperience(arr);
+  };
+
   const updatePoint = (i, val) => { const pts = [...form.points]; pts[i] = val; setForm(p => ({ ...p, points: pts })); };
   const addPoint = () => setForm(p => ({ ...p, points: [...p.points, ''] }));
   const removePoint = (i) => setForm(p => ({ ...p, points: p.points.filter((_, j) => j !== i) }));
@@ -207,6 +221,8 @@ function ExperienceEditor({ data, showToast }) {
             <strong>{exp.title}</strong>
             <div style={{ fontSize: 13, color: '#666' }}>{exp.period} • {exp.type}</div>
           </div>
+          <button className="admin-icon-btn" onClick={() => moveUp(i)} disabled={i === 0} style={{ opacity: i === 0 ? 0.3 : 1 }}><FiArrowUp /></button>
+          <button className="admin-icon-btn" onClick={() => moveDown(i)} disabled={i === experience.length - 1} style={{ opacity: i === experience.length - 1 ? 0.3 : 1 }}><FiArrowDown /></button>
           <button className="admin-icon-btn" onClick={() => openEdit(i)}><FiEdit3 /></button>
           <button className="admin-icon-btn danger" onClick={() => remove(i)}><FiTrash2 /></button>
         </div>
@@ -239,6 +255,20 @@ function EducationEditor({ data, showToast }) {
   };
 
   const remove = (i) => { if (confirm('Delete?')) { setEducation(education.filter((_, j) => j !== i)); showToast('🗑️ Deleted!'); } };
+
+  const moveUp = (i) => {
+    if (i === 0) return;
+    const arr = [...education];
+    [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+    setEducation(arr);
+  };
+
+  const moveDown = (i) => {
+    if (i === education.length - 1) return;
+    const arr = [...education];
+    [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+    setEducation(arr);
+  };
 
   const updateDetail = (i, val) => { const d = [...form.details]; d[i] = val; setForm(p => ({ ...p, details: d })); };
   const addDetail = () => setForm(p => ({ ...p, details: [...p.details, ''] }));
@@ -281,6 +311,8 @@ function EducationEditor({ data, showToast }) {
             <strong>{edu.school}</strong>
             <div style={{ fontSize: 13, color: '#666' }}>{edu.period}</div>
           </div>
+          <button className="admin-icon-btn" onClick={() => moveUp(i)} disabled={i === 0} style={{ opacity: i === 0 ? 0.3 : 1 }}><FiArrowUp /></button>
+          <button className="admin-icon-btn" onClick={() => moveDown(i)} disabled={i === education.length - 1} style={{ opacity: i === education.length - 1 ? 0.3 : 1 }}><FiArrowDown /></button>
           <button className="admin-icon-btn" onClick={() => openEdit(i)}><FiEdit3 /></button>
           <button className="admin-icon-btn danger" onClick={() => remove(i)}><FiTrash2 /></button>
         </div>
@@ -311,6 +343,20 @@ function SkillsEditor({ data, showToast }) {
   };
 
   const remove = (i) => { if (confirm('Delete?')) { setSkills(skills.filter((_, j) => j !== i)); showToast('🗑️ Deleted!'); } };
+
+  const moveUp = (i) => {
+    if (i === 0) return;
+    const arr = [...skills];
+    [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+    setSkills(arr);
+  };
+
+  const moveDown = (i) => {
+    if (i === skills.length - 1) return;
+    const arr = [...skills];
+    [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+    setSkills(arr);
+  };
 
   const updateItem = (i, val) => { const items = [...form.items]; items[i] = val; setForm(p => ({ ...p, items })); };
   const addItem = () => setForm(p => ({ ...p, items: [...p.items, ''] }));
@@ -351,6 +397,8 @@ function SkillsEditor({ data, showToast }) {
             <strong>{cat.category}</strong>
             <div style={{ fontSize: 13, color: '#666' }}>{cat.items.join(', ')}</div>
           </div>
+          <button className="admin-icon-btn" onClick={() => moveUp(i)} disabled={i === 0} style={{ opacity: i === 0 ? 0.3 : 1 }}><FiArrowUp /></button>
+          <button className="admin-icon-btn" onClick={() => moveDown(i)} disabled={i === skills.length - 1} style={{ opacity: i === skills.length - 1 ? 0.3 : 1 }}><FiArrowDown /></button>
           <button className="admin-icon-btn" onClick={() => openEdit(i)}><FiEdit3 /></button>
           <button className="admin-icon-btn danger" onClick={() => remove(i)}><FiTrash2 /></button>
         </div>
@@ -390,6 +438,20 @@ function ProjectsEditor({ data, showToast }) {
   };
 
   const remove = (i) => { if (confirm('Delete?')) { setProjects(projects.filter((_, j) => j !== i)); showToast('🗑️ Deleted!'); } };
+
+  const moveUp = (i) => {
+    if (i === 0) return;
+    const arr = [...projects];
+    [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+    setProjects(arr);
+  };
+
+  const moveDown = (i) => {
+    if (i === projects.length - 1) return;
+    const arr = [...projects];
+    [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+    setProjects(arr);
+  };
 
   const updateTech = (i, val) => { const t = [...form.techStack]; t[i] = val; setForm(p => ({ ...p, techStack: t })); };
   const addTech = () => setForm(p => ({ ...p, techStack: [...p.techStack, ''] }));
@@ -456,6 +518,8 @@ function ProjectsEditor({ data, showToast }) {
               <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{p.techStack.join(', ')}</div>
             </div>
             <div className="admin-project-card-actions">
+              <button className="admin-icon-btn" onClick={() => moveUp(i)} disabled={i === 0} style={{ opacity: i === 0 ? 0.3 : 1 }}><FiArrowUp /></button>
+              <button className="admin-icon-btn" onClick={() => moveDown(i)} disabled={i === projects.length - 1} style={{ opacity: i === projects.length - 1 ? 0.3 : 1 }}><FiArrowDown /></button>
               <button className="admin-icon-btn" onClick={() => openEdit(i)}><FiEdit3 /></button>
               <button className="admin-icon-btn danger" onClick={() => remove(i)}><FiTrash2 /></button>
             </div>
@@ -498,6 +562,20 @@ function CertificatesEditor({ data, showToast }) {
 
   const remove = (i) => { if (confirm('Delete?')) { setCertificates(certificates.filter((_, j) => j !== i)); showToast('🗑️ Deleted!'); } };
 
+  const moveUp = (i) => {
+    if (i === 0) return;
+    const arr = [...certificates];
+    [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+    setCertificates(arr);
+  };
+
+  const moveDown = (i) => {
+    if (i === certificates.length - 1) return;
+    const arr = [...certificates];
+    [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+    setCertificates(arr);
+  };
+
   if (form !== null) {
     return (
       <div className="admin-form">
@@ -538,6 +616,8 @@ function CertificatesEditor({ data, showToast }) {
             <strong>{cert.title}</strong>
             <div style={{ fontSize: 13, color: '#666' }}>{cert.issuer} • {cert.date}</div>
           </div>
+          <button className="admin-icon-btn" onClick={() => moveUp(i)} disabled={i === 0} style={{ opacity: i === 0 ? 0.3 : 1 }}><FiArrowUp /></button>
+          <button className="admin-icon-btn" onClick={() => moveDown(i)} disabled={i === certificates.length - 1} style={{ opacity: i === certificates.length - 1 ? 0.3 : 1 }}><FiArrowDown /></button>
           <button className="admin-icon-btn" onClick={() => openEdit(i)}><FiEdit3 /></button>
           <button className="admin-icon-btn danger" onClick={() => remove(i)}><FiTrash2 /></button>
         </div>
