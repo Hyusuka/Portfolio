@@ -144,43 +144,35 @@ export const defaultCertificates = [
   },
   {
     id: 5,
-    title: "Go-Lang for Beginner",
-    issuer: "Universitas Gunadarma",
-    date: "February 19, 2024",
-    description: "Certificate of Training for completing the Go-Lang for Beginner program.",
-    image: "/images/sertifikat/serti5.jpg"
-  },
-  {
-    id: 6,
     title: "Fundamental DBMS",
     issuer: "Universitas Gunadarma",
     date: "August 21, 2023",
     description: "Certificate of Training for completing the Fundamental DBMS program.",
-    image: "/images/sertifikat/serti6.jpg"
+    image: "/images/sertifikat/serti5.jpg"
   },
   {
-    id: 7,
+    id: 6,
     title: "Fundamental Web Programming",
     issuer: "Universitas Gunadarma",
     date: "February 20, 2023",
     description: "Certificate of Training for completing the Fundamental Web Programming program.",
-    image: "/images/sertifikat/serti8.jpg"
+    image: "/images/sertifikat/serti6.jpg"
   },
   {
-    id: 8,
+    id: 7,
     title: "Industrial Work Practice (Internship)",
     issuer: "Politeknik SSR",
     date: "March 13, 2020",
     description: "Certificate of Participation for completing the Industrial Work Practice program in Computer and Network Engineering.",
-    image: "/images/sertifikat/serti9.jpg"
+    image: "/images/sertifikat/serti7.jpg"
   },
   {
-    id: 9,
+    id: 8,
     title: "ESET Campus Security Day",
     issuer: "Universitas Gunadarma & PT Prosperita Mitra Indonesia",
     date: "July 4, 2025",
     description: "Certificate of Attendance for participating in the ESET Campus Security Day to improve personal data security literacy.",
-    image: "/images/sertifikat/serti11.png"
+    image: "/images/sertifikat/serti8.png"
   }
 ];
 
