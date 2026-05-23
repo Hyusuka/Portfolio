@@ -132,7 +132,7 @@ export const defaultCertificates = [
     issuer: "Universitas Gunadarma",
     date: "August 19, 2024",
     description: "Certificate of Training for completing the Oracle for Beginner program.",
-    image: "/images/sertifikat/serti4jpg"
+    image: "/images/sertifikat/serti4.jpg"
   },
   {
     id: 4,
@@ -164,7 +164,7 @@ export const defaultCertificates = [
     issuer: "Politeknik SSR",
     date: "March 13, 2020",
     description: "Certificate of Participation for completing the Industrial Work Practice program in Computer and Network Engineering.",
-    image: "/images/sertifikat/serti10.jpg"
+    image: "/images/sertifikat/serti10.jpeg"
   },
   {
     id: 8,
