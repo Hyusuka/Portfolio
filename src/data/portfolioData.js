@@ -82,7 +82,7 @@ export const defaultEducation = [
 export const defaultSkills = [
   {
     category: "Programming",
-    items: ["Python", "PHP", "HTML", "CSS", "JavaScript"],
+    items: ["Python", "Flask", "Go-Lang", "PHP", "HTML", "CSS", "JavaScript"],
   },
   {
     category: "Backend & Database",
@@ -111,6 +111,7 @@ export const defaultLanguages = [
 
 export const defaultCertificates = [
   {
+    id: 1,
     title: "Introduction to Wireless LAN Installation",
     issuer: "Universitas Gunadarma",
     date: "May 17, 2024",
@@ -118,6 +119,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti1.jpg"
   },
   {
+    id: 2,
     title: "Go-Lang for Intermediate",
     issuer: "Universitas Gunadarma",
     date: "February 20, 2025",
@@ -125,6 +127,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti2.jpg"
   },
   {
+    id: 3,
     title: "Oracle for Beginner",
     issuer: "Universitas Gunadarma",
     date: "August 19, 2024",
@@ -132,6 +135,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti3.jpg"
   },
   {
+    id: 4,
     title: "Application Development Design",
     issuer: "Universitas Gunadarma",
     date: "September 27, 2025",
@@ -139,6 +143,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti4.jpg"
   },
   {
+    id: 5,
     title: "Go-Lang for Beginner",
     issuer: "Universitas Gunadarma",
     date: "February 19, 2024",
@@ -146,6 +151,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti5.jpg"
   },
   {
+    id: 6,
     title: "Fundamental DBMS",
     issuer: "Universitas Gunadarma",
     date: "August 21, 2023",
@@ -153,6 +159,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti6.jpg"
   },
   {
+    id: 7,
     title: "Oracle for Intermediate",
     issuer: "Universitas Gunadarma",
     date: "August 18, 2025",
@@ -160,6 +167,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti7.jpg"
   },
   {
+    id: 8,
     title: "Fundamental Web Programming",
     issuer: "Universitas Gunadarma",
     date: "February 20, 2023",
@@ -167,18 +175,20 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti8.jpg"
   },
   {
+    id: 9,
     title: "Industrial Work Practice (Internship)",
-    issuer: "SSR Jakarta",
+    issuer: "Politeknik SSR",
     date: "March 13, 2020",
     description: "Certificate of Participation for completing the Industrial Work Practice program in Computer and Network Engineering.",
-    image: "/images/sertifikat/serti9.jpeg"
+    image: "/images/sertifikat/serti9.jpg"
   },
   {
+    id: 10,
     title: "ESET Campus Security Day",
     issuer: "Universitas Gunadarma & PT Prosperita Mitra Indonesia",
     date: "July 4, 2025",
     description: "Certificate of Attendance for participating in the ESET Campus Security Day to improve personal data security literacy.",
-    image: "/images/sertifikat/serti10.png"
+    image: "/images/sertifikat/serti11.png"
   }
 ];
 
@@ -391,6 +401,21 @@ export const defaultProjects = [
       "Key Features: Student record management, name-based search functionality, and secure database integration.",
     ],
   },
+  {
+    id: 15,
+    title: "Pothole Detection Early Warning System",
+    shortDesc:
+      "Real-time pothole detection system based on YOLOv9, Flask, and Supabase. This application is designed to be accessed using a smartphone (as a Progressive Web App / PWA) installed on a motorbike dashboard to detect potholes, record GPS coordinates, speed, and upload the evidence to a Cloud database.",
+    techStack: ["Python", "Flask", "HTML", "CSS", "Supabase", "JSON"],
+    image: "/images/project-pothole-detection.png",
+    github: "https://github.com/Hyusuka/deteksi-lubang",
+    details: [
+      "Developed a full-stack web application for pothole detection using Python and Flask framework.",
+      "Engineered a robust RESTful API using the Flask framework to handle CRUD operations with a Supabase database.",
+      "Implemented SPA (Single Page Application) architecture for seamless user experience and optimized static file serving.",
+      "Key Features: Pothole detection, GPS coordinates, speed, and upload the evidence to a Cloud database.",
+    ],
+  }
 ];
 export const githubRepos = [
   {
@@ -516,6 +541,15 @@ export const githubRepos = [
     description: "",
     html_url: "https://github.com/Hyusuka/Youtube_Scraping",
     language: "HTML",
+    stargazers_count: 0,
+    forks_count: 0,
+  },
+  {
+    id: 1366812297,
+    name: "Pothole Detection Early Warning System",
+    description: "Real-time pothole detection system based on YOLOv9, Flask, and Supabase. This application is designed to be accessed using a smartphone (as a Progressive Web App / PWA) installed on a motorbike dashboard to detect potholes, record GPS coordinates, speed, and upload the evidence to a Cloud database.",
+    html_url: "https://github.com/Hyusuka/deteksi-lubang",
+    language: "Python, Flask, HTML, CSS, Supabase, JSON",
     stargazers_count: 0,
     forks_count: 0,
   },
