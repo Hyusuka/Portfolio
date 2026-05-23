@@ -160,14 +160,6 @@ export const defaultCertificates = [
   },
   {
     id: 7,
-    title: "Oracle for Intermediate",
-    issuer: "Universitas Gunadarma",
-    date: "August 18, 2025",
-    description: "Certificate of Training for completing the Oracle for Intermediate program.",
-    image: "/images/sertifikat/serti7.jpg"
-  },
-  {
-    id: 8,
     title: "Fundamental Web Programming",
     issuer: "Universitas Gunadarma",
     date: "February 20, 2023",
@@ -175,7 +167,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti8.jpg"
   },
   {
-    id: 9,
+    id: 8,
     title: "Industrial Work Practice (Internship)",
     issuer: "Politeknik SSR",
     date: "March 13, 2020",
@@ -183,7 +175,7 @@ export const defaultCertificates = [
     image: "/images/sertifikat/serti9.jpg"
   },
   {
-    id: 10,
+    id: 9,
     title: "ESET Campus Security Day",
     issuer: "Universitas Gunadarma & PT Prosperita Mitra Indonesia",
     date: "July 4, 2025",
