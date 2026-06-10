@@ -266,7 +266,7 @@ export const defaultProjects = [
     shortDesc:
       "A comprehensive web-based light novel reading and e-commerce platform with payment gateway integration.",
     techStack: ["Laravel 12", "Tailwind CSS", "MySQL", "Midtrans API"],
-    image: "/images/project-ikaru-library.png",
+    image: "/images/Ikaru-Library.png",
     github: "//",
     details: [
       "Collaborated in a team of three to design and develop a comprehensive web-based light novel reading and e-commerce platform.",
