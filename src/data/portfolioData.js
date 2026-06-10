@@ -289,5 +289,20 @@ export const defaultProjects = [
       "Implemented SPA (Single Page Application) architecture for seamless user experience and optimized static file serving.",
       "Key Features: Pothole detection, GPS coordinates, speed, and upload the evidence to a Cloud database.",
     ],
+  },
+  {
+    id: 8,
+    title: "Sistem Pengolahan Nilai Siswa",
+    shortDesc:
+      "A comprehensive web-based student grading management system built with Laravel 12. This application features secure multi-role authentication (Admin, Teacher, Student), automated weighted grade calculations, and digital PDF report card generation.",
+    techStack: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "Bootstrap"],
+    image: "/images/image.png",
+    github: "https://github.com/Hyusuka/Sistem-Nilai-Mahasiswa",
+    details: [
+      "Developed a full-stack academic management web application using Laravel 12 and MySQL database.",
+      "Implemented a robust Multi-Guard Authentication system with isolated database schemas for Admins, Teachers, and Students to ensure strict access control and data integrity.",
+      "Engineered automated grading logic and intelligent passing status determination by integrating Structured Programming (helpers) with Object-Oriented Programming (Eloquent Models).",
+      "Key Features: Multi-role access, automated student account generation via encrypted NIS, real-time grade calculation (Task, UTS, UAS), and downloadable PDF report cards using DomPDF.",
+    ],
   }
 ];
