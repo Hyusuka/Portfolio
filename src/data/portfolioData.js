@@ -9,9 +9,8 @@ export const defaultProfile = {
   summary:
     "Full Stack Developer and Python Developer with over three years of experience gained through formal education at Gunadarma University and self-directed learning via online resources, including technical videos and developer forums. Possesses a strong foundation in web development and a continuous drive to expand technical expertise.",
   interests: [
-    { label: "Cybersecurity", icon: "🛡️" },
+    { label: "Programer", icon: "🌐" },
     { label: "Python Development", icon: "🐍" },
-    { label: "Website Development", icon: "🌐" },
     { label: "Artificial Intelligence", icon: "🤖" },
   ],
   photo: "/images/profile.png",
@@ -81,12 +80,20 @@ export const defaultEducation = [
 
 export const defaultSkills = [
   {
-    category: "Programming",
-    items: ["Python", "Flask", "Go-Lang", "PHP", "HTML", "CSS", "JavaScript"],
+    category: "Frontend Development",
+    items: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Bootstrap"],
   },
   {
-    category: "Backend & Database",
-    items: ["Django", "MySQL", "PostgreSQL", "Laravel", "REST API"],
+    category: "Backend Development",
+    items: ["PHP", "Node.js","Restful API"],
+  },
+  {
+    category: "Frameworks",
+    items: ["Laravel", "Flask","React.js"],
+  },
+  {
+    category: "Database",
+    items: ["MySQL", "PostgreSQL", "NoSQL"],
   },
   {
     category: "Tools",
@@ -99,6 +106,9 @@ export const defaultSkills = [
       "Problem Solving",
       "Adaptability",
       "Communication",
+      "Time Management",
+      "Critical Thinking",
+      "Self-Motivation",
     ],
   },
 ];
@@ -183,7 +193,7 @@ export const defaultProjects = [
     shortDesc:
       "A data security web application combining AES-256 encryption and LSB Steganography to hide secret messages in images.",
     techStack: ["Python", "Flask", "OpenCV", "MySQL"],
-    image: "/images/project-steganography.png",
+    image: "/images/Penyisipan-data.png",
     github: "https://github.com/Hyusuka/Penyisipan_Data",
     details: [
       "Developed a data security web application that combines AES-256 algorithm encryption and LSB Steganography techniques to hide secret messages in image files (PNG).",
@@ -197,7 +207,7 @@ export const defaultProjects = [
     shortDesc:
       "A modern desktop application to automate the extraction of YouTube comments and metadata for data analysis.",
     techStack: ["Python", "CustomTkinter", "YouTube API", "OpenPyXL"],
-    image: "/images/project-youtube-scraper.png",
+    image: "/images/yt-Comment-Scraper.png",
     github: "https://github.com/Hyusuka/Youtube_Scraping",
     details: [
       "Developed a modern desktop application to automate the extraction of YouTube comments and metadata for data analysis and research purposes.",
@@ -209,35 +219,18 @@ export const defaultProjects = [
   },
   {
     id: 3,
-    title: "E-Commerce Auto-Buy Bot",
+    title: "SMPP — Sistem Monitoring Petugas PPSU",
     shortDesc:
-      "An automation bot for instant product purchasing on e-commerce platforms during flash sales.",
-    techStack: ["Python", "Playwright", "CDP"],
-    image: "/images/project-ecommerce-bot.png",
-    github: "https://github.com/Hyusuka",
+      "A hybrid platform (Web & Mobile) designed to monitor, validate, and manage the operations of public facility maintenance workers in real-time.",
+    techStack: ["Tailwind CSSv4", "Alpine.js", "Vite", "Laravel 11", "PHP 8.4","MySQL", "Gemini AI API", "Laravel Reverb", "Leaflet.js", "Redis"],
+    image: "/images/PPSU.png",
+    github: "https://github.com/Hyusuka/SMPP",
     details: [
-      "Flash Sale Automation: Build bots for instant product purchasing on e-commerce platforms with high precision.",
-      "Smart Detection: Develop a dynamic element search algorithm (based on text/label) that is resistant to website UI changes.",
-      "Scalability: Supports simultaneous multi-account execution using isolated Chrome profiles over a CDP connection.",
+      "Developed a multi-role field worker monitoring system. Key technical achievements include implementing Live GPS Tracking using WebSockets (Laravel Reverb) and Leaflet.js, an evidence-based reporting system, dynamic KPI score calculation, and complex data filtering using optimized Eloquent queries.",
     ],
   },
   {
     id: 4,
-    title: "SMPP — Sistem Monitoring Petugas PPSU",
-    shortDesc:
-      "An integrated work management platform for 3 levels of users with CSRF and Bcrypt hashing security systems.",
-    techStack: ["PHP", "MySQL", "JavaScript", "Gemini AI API", "Leaflet.js"],
-    image: "/images/project-smpp-web.png",
-    github: "https://github.com/Hyusuka/PPSU",
-    details: [
-      "Building an integrated work management platform for 3 levels of users (Admin, Supervisor, Officer) with CSRF and Bcrypt hashing security systems.",
-      "Create a structured workflow (4-Status Work System) that records task progress from start to finish in real-time.",
-      "Develop an interactive dashboard that displays performance statistics and tracking officer locations on digital maps.",
-      "Provides a report export feature to Excel format for management evaluation needs.",
-    ],
-  },
-  {
-    id: 5,
     title: "SMPP Mobile — Manajemen Petugas PPSU",
     shortDesc:
       "Android-based operational management app for attendance automation, work reporting and real-time monitoring.",
@@ -253,23 +246,7 @@ export const defaultProjects = [
     ],
   },
   {
-    id: 6,
-    title: "TCG Database & Management System",
-    shortDesc:
-      "A web-based Trading Card Game collectible card management platform with full CRUD features.",
-    techStack: ["React.js", "Node.js", "Express", "MySQL", "Multer"],
-    image: "/images/project-tcg-database.png",
-    github: "https://github.com/Hyusuka/TCG",
-    details: [
-      "Building a web-based collectible card management platform (Trading Card Game) using the React.js (Frontend) and Node.js/Express (Backend) stack.",
-      "Developed complete CRUD features for managing card data and collection sets through an intuitive Admin Dashboard.",
-      "Implemented an image storage system using Multer and MySQL relational database integration for structured data management.",
-      "Efficiently manage application state using React Context API to ensure data synchronization between pages.",
-      "Build a secure RESTful API to connect the user interface with the database server.",
-    ],
-  },
-  {
-    id: 7,
+    id: 5,
     title: "Virtual Mouse — AI Hand Gesture Control",
     shortDesc:
       "An HCI system that allows full control of a computer without a physical device using camera input.",
@@ -284,70 +261,13 @@ export const defaultProjects = [
     ],
   },
   {
-    id: 8,
-    title: "Discord Server Greeting Bot",
-    shortDesc:
-      "An automatic bot for Discord server to manage and monitor incoming/outgoing member activities in real-time.",
-    techStack: ["Node.js", "JavaScript", "Discord.js"],
-    image: "/images/project-anime-streaming.png",
-    github: "https://github.com/Hyusuka/DiscordWelcomeGoodbye",
-    details: [
-      "Build an automatic bot for the Discord server which functions to manage and monitor the incoming and outgoing activities of members in real-time.",
-      "Implemented event listeners (guildMemberAdd and guildMemberRemove) using Discord.js to detect when users join or leave the server.",
-      "Design welcome and farewell messages using the Rich Embeds feature, which dynamically displays user names, profile avatars, custom images, and color codes.",
-    ],
-  },
-  {
-    id: 9,
-    title: "Discord Self-Assigning Role Bot",
-    shortDesc:
-      "An event-driven Discord bot to simplify role management via the Reaction Roles system.",
-    techStack: ["JavaScript", "Node.js", "Discord.js", "JSON"],
-    image: "/images/project-anime-streaming.png",
-    github: "https://github.com/Hyusuka/DiscordRole",
-    details: [
-      "Role Management Automation: Implementing a feature for automatically assigning and deleting roles based on user emoji reaction interactions.",
-      "Member Onboarding Feature: Design a system that automatically welcomes new members with an interactive guide to select their role preferences.",
-      "Dynamic Configuration Management: Uses JSON file integration to map relationships between emoji and role names, ensuring easy reconfiguration.",
-    ],
-  },
-  {
-    id: 10,
-    title: "Discord Music Bot",
-    shortDesc:
-      "An interactive music bot for high-quality real-time audio streaming on Discord with Lavalink integration.",
-    techStack: ["Node.js", "Discord.js", "Riffy", "Lavalink"],
-    image: "/images/project-anime-streaming.png",
-    github: "https://github.com/Hyusuka/DiscordMusic",
-    details: [
-      "A Node.js-based interactive music bot that serves high-quality real-time audio streaming on Discord by leveraging third-party integration (Lavalink).",
-      "Key Features: Interactive queue management (queue, shuffle, loop), playlist playback, full music control and instant processing of audio effects (Bassboost, 8D, Nightcore).",
-      "Built using Event-driven and Asynchronous Programming concepts to ensure fast bot response and stable song playback performance.",
-    ],
-  },
-  {
-    id: 11,
-    title: "Anime Streaming Platform",
-    shortDesc:
-      "A full-stack anime streaming platform with search, multi-parameter filters, and AJAX-based recommendations.",
-    techStack: ["PHP", "JavaScript", "MySQL", "Docker", "Bootstrap"],
-    image: "/images/project-anime-streaming.png",
-    github: "https://github.com/Hyusuka",
-    details: [
-      "Developed a full-stack anime streaming platform with search features, multi-parameter filters (genre/season/studio), and AJAX-based asynchronous recommendation system.",
-      "Designed a complex MySQL relational database schema to manage anime data, track daily views, and automatically generate popularity ranking metrics.",
-      "Implement containerization using Docker & Docker Compose (Nginx, PHP, MariaDB) to standardize the development and deployment environment.",
-      "Build a centralized admin panel (CMS) for content management with a responsive (mobile-friendly) interface.",
-    ],
-  },
-  {
-    id: 12,
+    id: 6,
     title: "Ikaru Library — Light Novel Platform",
     shortDesc:
       "A comprehensive web-based light novel reading and e-commerce platform with payment gateway integration.",
     techStack: ["Laravel 12", "Tailwind CSS", "MySQL", "Midtrans API"],
     image: "/images/project-ikaru-library.png",
-    github: "https://github.com/Hyusuka/readspace",
+    github: "//",
     details: [
       "Collaborated in a team of three to design and develop a comprehensive web-based light novel reading and e-commerce platform.",
       "Led the integration of Midtrans Payment Gateway, enabling secure and automated transactions for novel purchases and premium content.",
@@ -356,42 +276,12 @@ export const defaultProjects = [
     ],
   },
   {
-    id: 13,
-    title: "Golang Fundamental & Web Server",
-    shortDesc:
-      "Collection of implementations of basic Go programming language features with a static web server.",
-    techStack: ["Go", "Net/HTTP", "Standard Library"],
-    image: "/images/project-tcg-database.png",
-    github: "https://github.com/Hyusuka/GolangBeginer",
-    details: [
-      "Core Go Logic: Implements basic Go concepts such as Struct Methods, Receiver Functions, and Multiple Return Values for efficient data processing.",
-      "Standard Library Usage: Utilizes Go's built-in libraries such as net/http for server creation, as well as math, strings, and time for data manipulation.",
-      "Web Server Implementation: Building a static file server using Go to serve frontend assets (Polymer) on local ports.",
-      "Problem Solving: Solve various logic modules that practice clean code and neat folder structure skills in the Go ecosystem.",
-    ],
-  },
-  {
-    id: 14,
-    title: "Student Data Management System",
-    shortDesc:
-      "A full-stack web application for student data management using Golang and Polymer framework.",
-    techStack: ["Golang", "Polymer", "MySQL", "Gorilla Mux"],
-    image: "/images/project-tcg-database.png",
-    github: "https://github.com/Hyusuka/GolangDataMahasiswa",
-    details: [
-      "Developed a full-stack web application for student data management using Golang and Polymer framework.",
-      "Engineered a robust RESTful API using the Gorilla Mux router to handle CRUD operations with a MySQL database.",
-      "Implemented SPA (Single Page Application) architecture for seamless user experience and optimized static file serving.",
-      "Key Features: Student record management, name-based search functionality, and secure database integration.",
-    ],
-  },
-  {
-    id: 15,
+    id: 7,
     title: "Pothole Detection Early Warning System",
     shortDesc:
       "Real-time pothole detection system based on YOLOv9, Flask, and Supabase. This application is designed to be accessed using a smartphone (as a Progressive Web App / PWA) installed on a motorbike dashboard to detect potholes, record GPS coordinates, speed, and upload the evidence to a Cloud database.",
     techStack: ["Python", "Flask", "HTML", "CSS", "Supabase", "JSON"],
-    image: "/images/project-pothole-detection.png",
+    image: "/images/pothole.png",
     github: "https://github.com/Hyusuka/deteksi-lubang",
     details: [
       "Developed a full-stack web application for pothole detection using Python and Flask framework.",
@@ -400,141 +290,4 @@ export const defaultProjects = [
       "Key Features: Pothole detection, GPS coordinates, speed, and upload the evidence to a Cloud database.",
     ],
   }
-];
-export const githubRepos = [
-  {
-    id: 1017943614,
-    name: "DiscordMusic",
-    description: "",
-    html_url: "https://github.com/Hyusuka/DiscordMusic",
-    language: "JavaScript",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1017946356,
-    name: "DiscordRole",
-    description: "",
-    html_url: "https://github.com/Hyusuka/DiscordRole",
-    language: "JavaScript",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1017948636,
-    name: "DiscordWelcomeGoodbye",
-    description: "",
-    html_url: "https://github.com/Hyusuka/DiscordWelcomeGoodbye",
-    language: "JavaScript",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1242648971,
-    name: "GolangBeginer",
-    description: "",
-    html_url: "https://github.com/Hyusuka/GolangBeginer",
-    language: "HTML",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1242643247,
-    name: "GolangDataMahasiswa",
-    description: "",
-    html_url: "https://github.com/Hyusuka/GolangDataMahasiswa",
-    language: "HTML",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1141698646,
-    name: "kyoto-portfolio",
-    description: "Hello My name Juan Wens Sanctung Rahawarin, you can call me Juan",
-    html_url: "https://github.com/Hyusuka/kyoto-portfolio",
-    language: "TypeScript",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 665996528,
-    name: "LinkTree",
-    description: "",
-    html_url: "https://github.com/Hyusuka/LinkTree",
-    language: "HTML",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1017955391,
-    name: "Penyisipan_Data",
-    description: "",
-    html_url: "https://github.com/Hyusuka/Penyisipan_Data",
-    language: "Python",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1241616691,
-    name: "Portfolio",
-    description: "",
-    html_url: "https://github.com/Hyusuka/Portfolio",
-    language: "JavaScript",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1211547931,
-    name: "PPSU",
-    description: "",
-    html_url: "https://github.com/Hyusuka/PPSU",
-    language: "PHP",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1211610589,
-    name: "PPSU-Mobile",
-    description: "",
-    html_url: "https://github.com/Hyusuka/PPSU-Mobile",
-    language: "Kotlin",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1211606255,
-    name: "TCG",
-    description: "",
-    html_url: "https://github.com/Hyusuka/TCG",
-    language: "JavaScript",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1211605682,
-    name: "Virtual_Mouse",
-    description: "",
-    html_url: "https://github.com/Hyusuka/Virtual_Mouse",
-    language: "Python",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1215269939,
-    name: "Youtube_Scraping",
-    description: "",
-    html_url: "https://github.com/Hyusuka/Youtube_Scraping",
-    language: "HTML",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
-  {
-    id: 1366812297,
-    name: "Pothole Detection Early Warning System",
-    description: "Real-time pothole detection system based on YOLOv9, Flask, and Supabase. This application is designed to be accessed using a smartphone (as a Progressive Web App / PWA) installed on a motorbike dashboard to detect potholes, record GPS coordinates, speed, and upload the evidence to a Cloud database.",
-    html_url: "https://github.com/Hyusuka/deteksi-lubang",
-    language: "Python, Flask, HTML, CSS, Supabase, JSON",
-    stargazers_count: 0,
-    forks_count: 0,
-  },
 ];
